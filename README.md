@@ -1,4 +1,4 @@
-# 📅 Agendamento - MVP  
+# 📅 Agendamento - MVP - EM MANUTENÇÃO!
 **Micro‑SaaS de agendamento online** para profissionais liberais (barbeiros, manicures, esteticistas, personal trainers, etc).
 
 > Problema que resolve: **organizar horários e receber reservas 24/7 sem depender de mensagens no WhatsApp**.  
