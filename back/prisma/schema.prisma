@@ -1,0 +1,38 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+model horarios {
+  id_horario Int       @id @default(autoincrement())
+  id_usuario Int?
+  data_hora  DateTime  @db.DateTime(0)
+  disponivel Boolean?  @default(true)
+  usuarios   usuarios? @relation(fields: [id_usuario], references: [id_usuario], onDelete: Cascade, onUpdate: NoAction, map: "horarios_ibfk_1")
+  reservas   reservas?
+
+  @@index([id_usuario], map: "id_usuario")
+}
+
+model reservas {
+  id_reserva    Int       @id @default(autoincrement())
+  id_horario    Int?      @unique(map: "id_horario")
+  cliente_nome  String    @db.VarChar(100)
+  cliente_email String    @db.VarChar(100)
+  criado_em     DateTime? @default(now()) @db.Timestamp(0)
+  horarios      horarios? @relation(fields: [id_horario], references: [id_horario], onDelete: Cascade, onUpdate: NoAction, map: "reservas_ibfk_1")
+}
+
+model usuarios {
+  id_usuario Int        @id @default(autoincrement())
+  nome       String     @db.VarChar(100)
+  email      String     @unique(map: "email") @db.VarChar(100)
+  senha      String     @db.VarChar(255)
+  slug       String     @unique(map: "slug") @db.VarChar(50)
+  criado_em  DateTime?  @default(now()) @db.Timestamp(0)
+  horarios   horarios[]
+}
