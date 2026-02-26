@@ -64,3 +64,16 @@ export const SUCCESS_LOGIN_ITEM = {
   status_code: 200,
   message: "Login bem-sucedido!!",
 };
+export const SUCCESS_GET_ITEMS = {
+  status: true,
+  status_code: 200,
+  message: "Dados retornados com sucesso!!",
+};
+export const SUCCESS_GET_ITEM = {
+  status: true,
+  status_code: 200,
+  message: "Dado retornado com sucesso!!",
+};
+
+// Constantes
+export const BCRYPT_SALT_ROUNDS = 10;

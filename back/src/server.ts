@@ -1,26 +1,15 @@
+import "dotenv/config";
 import Express from "express";
 import cors from "cors";
-import BodyParser from "body-parser";
-import router from "./src/routes.js";
-import dotenv from "dotenv";
-
-dotenv.config();
+import router from "./routes.js";
 
 const app = Express();
+const PORT = process.env["PORT"] ?? 3000;
 
-const start = async function () {
-  app.use(cors());
-  app.use(BodyParser.json());
-  app.use(router);
+app.use(cors());
+app.use(Express.json());
+app.use(router);
 
-  try {
-    app.listen(3000, () => {
-      console.log("Server is running on port 3000");
-    });
-  } catch (error) {
-    console.log("Error starting server:", error);
-    process.exit(1);
-  }
-};
-
-start();
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${String(PORT)}`);
+});
