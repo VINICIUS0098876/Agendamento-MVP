@@ -19,6 +19,7 @@ import {
   UpdateUserService,
   GetUserByIdService,
   GetUserService,
+  GetUserBySlugService,
   AuthenticateUserService,
   DeleteUserService,
 } from "../service/usuario.js";
@@ -28,6 +29,7 @@ const createUserService = new CreateUserService();
 const updateUserService = new UpdateUserService();
 const getUserService = new GetUserService();
 const getUserByIdService = new GetUserByIdService();
+const getUserBySlugService = new GetUserBySlugService();
 const authenticateUserService = new AuthenticateUserService();
 const deleteUserService = new DeleteUserService();
 
@@ -154,6 +156,29 @@ export class AuthenticateUserController {
         return res.status(error.statusCode).json({ message: error.message });
       }
       console.error("Error authenticating user:", error);
+      return res.status(500).json({ message: ERROR_INTERNAL_SERVER });
+    }
+  }
+}
+
+// Rota pública — busca barbeiro pelo slug
+export class GetUserBySlugController {
+  async handle(req: Request, res: Response) {
+    try {
+      const slug = req.params.slug as string;
+
+      if (!slug) {
+        return res.status(400).json({ message: ERROR_REQUIRED_FIELDS });
+      }
+
+      const result = await getUserBySlugService.execute(slug);
+
+      return res.status(200).json({ message: SUCCESS_GET_ITEM, data: result });
+    } catch (error: unknown) {
+      if (error instanceof AppError) {
+        return res.status(error.statusCode).json({ message: error.message });
+      }
+      console.error("Error getting user by slug:", error);
       return res.status(500).json({ message: ERROR_INTERNAL_SERVER });
     }
   }

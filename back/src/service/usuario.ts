@@ -122,6 +122,21 @@ export class GetUserByIdService {
   }
 }
 
+// Busca barbeiro pelo slug (rota pública para os clientes)
+export class GetUserBySlugService {
+  async execute(slug: string): Promise<SafeUser> {
+    const user = await prismaClient.usuarios.findUnique({
+      where: { slug },
+    });
+
+    if (!user) {
+      throw new AppError(404, "Barbeiro não encontrado");
+    }
+
+    return excludeSenha(user);
+  }
+}
+
 interface AuthenticateUserResponse {
   usuario: {
     id_usuario: number;
