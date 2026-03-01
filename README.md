@@ -1,75 +1,75 @@
-# 📅 Agendamento - MVP - EM MANUTENÇÃO!
-**Micro‑SaaS de agendamento online** para profissionais liberais (barbeiros, manicures, esteticistas, personal trainers, etc).
+# 📅 Scheduling - MVP - UNDER MAINTENANCE!
+**Online scheduling Micro‑SaaS** for independent professionals (barbers, nail artists, estheticians, personal trainers, etc.).
 
-> Problema que resolve: **organizar horários e receber reservas 24/7 sem depender de mensagens no WhatsApp**.  
-O profissional cria **slots de atendimento** e compartilha um **link público personalizado (slug)** para que clientes agendem em poucos cliques.
-
----
-
-## ✨ Visão Geral
-
-O **Agendamento - MVP** permite que um profissional:
-
-- Crie e gerencie horários disponíveis (slots)
-- Compartilhe uma página pública de agendamento via link
-- Acompanhe reservas em um dashboard
-
-Enquanto o cliente:
-
-- Acessa um link público
-- Visualiza horários disponíveis
-- Agenda com rapidez e praticidade
+> Problem it solves: **organize appointments and receive bookings 24/7 without relying on WhatsApp messages**.  
+The professional creates **availability slots** and shares a **personalized public link (slug)** so clients can book in just a few clicks.
 
 ---
 
-## 🚀 Funcionalidades
+## ✨ Overview
 
-### 👨‍💼 Para o Profissional
-- ✅ Cadastro e login com **senha criptografada (Bcrypt)**
-- ✅ **Autenticação JWT**
-- ✅ Criação e gerenciamento de **slots de horários**
-- ✅ Dashboard para visualizar **reservas e agenda**
-- ✅ Link público personalizado via **URL slug**  
-  Ex.: `https://seu-dominio.com/profissional/joao-barber`
+**Scheduling - MVP** enables a professional to:
 
-### 🧑‍💻 Para o Cliente
-- ✅ Página pública de agendamento por link
-- ✅ Visualização de horários disponíveis em tempo real
-- ✅ Agendamento rápido e intuitivo
-- ✅ Experiência mobile-friendly (UI moderna)
+- Create and manage available time slots (slots)
+- Share a public scheduling page via link
+- Track bookings in a dashboard
+
+While the client:
+
+- Accesses a public link
+- Views available times
+- Books quickly and conveniently
 
 ---
 
-## 🧱 Tecnologias Utilizadas
+## 🚀 Features
+
+### 👨‍💼 For the Professional
+- ✅ Sign up and log in with **encrypted password (Bcrypt)**
+- ✅ **JWT Authentication**
+- ✅ Create and manage **time slots**
+- ✅ Dashboard to view **bookings and schedule**
+- ✅ Personalized public link via **URL slug**  
+  Example: `https://your-domain.com/professional/joao-barber`
+
+### 🧑‍💻 For the Client
+- ✅ Public booking page via link
+- ✅ Real-time view of available times
+- ✅ Fast and intuitive booking
+- ✅ Mobile-friendly experience (modern UI)
+
+---
+
+## 🧱 Tech Stack
 
 ### Backend
-| Tecnologia | Uso |
+| Technology | Use |
 |---|---|
 | ![Node.js](https://img.shields.io/badge/Node.js-333?style=for-the-badge&logo=node.js&logoColor=3C873A) | Runtime |
-| ![TypeScript](https://img.shields.io/badge/TypeScript-333?style=for-the-badge&logo=typescript&logoColor=3178C6) | Tipagem / produtividade |
-| ![Express](https://img.shields.io/badge/Express.js-333?style=for-the-badge&logo=express&logoColor=white) | API REST |
+| ![TypeScript](https://img.shields.io/badge/TypeScript-333?style=for-the-badge&logo=typescript&logoColor=3178C6) | Typing / productivity |
+| ![Express](https://img.shields.io/badge/Express.js-333?style=for-the-badge&logo=express&logoColor=white) | REST API |
 | ![Prisma](https://img.shields.io/badge/Prisma-333?style=for-the-badge&logo=prisma&logoColor=2D3748) | ORM |
-| ![MySQL](https://img.shields.io/badge/MySQL-333?style=for-the-badge&logo=mysql&logoColor=4479A1) | Banco de dados |
-| ![JWT](https://img.shields.io/badge/JWT-333?style=for-the-badge&logo=jsonwebtokens&logoColor=white) | Autenticação |
-| ![Bcrypt](https://img.shields.io/badge/Bcrypt-333?style=for-the-badge&logo=hackthebox&logoColor=white) | Hash de senha |
+| ![MySQL](https://img.shields.io/badge/MySQL-333?style=for-the-badge&logo=mysql&logoColor=4479A1) | Database |
+| ![JWT](https://img.shields.io/badge/JWT-333?style=for-the-badge&logo=jsonwebtokens&logoColor=white) | Authentication |
+| ![Bcrypt](https://img.shields.io/badge/Bcrypt-333?style=for-the-badge&logo=hackthebox&logoColor=white) | Password hashing |
 
 ### Frontend
-| Tecnologia | Uso |
+| Technology | Use |
 |---|---|
 | ![React](https://img.shields.io/badge/React-333?style=for-the-badge&logo=react&logoColor=61DAFB) | UI |
 | ![Vite](https://img.shields.io/badge/Vite-333?style=for-the-badge&logo=vite&logoColor=646CFF) | Build / Dev Server |
-| ![TypeScript](https://img.shields.io/badge/TypeScript-333?style=for-the-badge&logo=typescript&logoColor=3178C6) | Tipagem |
+| ![TypeScript](https://img.shields.io/badge/TypeScript-333?style=for-the-badge&logo=typescript&logoColor=3178C6) | Typing |
 | ![Axios](https://img.shields.io/badge/Axios-333?style=for-the-badge&logo=axios&logoColor=5A29E4) | HTTP Client |
-| ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-333?style=for-the-badge&logo=tailwindcss&logoColor=38BDF8) | Estilização |
-| ![React Router](https://img.shields.io/badge/React_Router-333?style=for-the-badge&logo=reactrouter&logoColor=CA4245) | Rotas |
+| ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-333?style=for-the-badge&logo=tailwindcss&logoColor=38BDF8) | Styling |
+| ![React Router](https://img.shields.io/badge/React_Router-333?style=for-the-badge&logo=reactrouter&logoColor=CA4245) | Routing |
 
 ---
 
-## 🧭 Como rodar o projeto localmente
+## 🧭 How to run the project locally
 
-> Recomendado: **Node.js LTS** e **MySQL** instalado/rodando.
+> Recommended: **Node.js LTS** and **MySQL** installed/running.
 
-### 1) Clone o repositório
+### 1) Clone the repository
 ```bash
 git clone https://github.com/VINICIUS0098876/Agendamento-MVP.git
 cd Agendamento-MVP
@@ -79,19 +79,19 @@ cd Agendamento-MVP
 
 ## ⚙️ Backend (API)
 
-### 2) Acesse a pasta do backend
-> Ajuste o nome da pasta conforme a estrutura do seu repo (ex.: `backend`, `server`, `api`).
+### 2) Go to the backend folder
+> Adjust the folder name according to your repo structure (e.g., `backend`, `server`, `api`).
 ```bash
 cd backend
 ```
 
-### 3) Instale as dependências
+### 3) Install dependencies
 ```bash
 npm install
 ```
 
-### 4) Configure variáveis de ambiente
-Crie um arquivo `.env` na pasta do backend (exemplo):
+### 4) Configure environment variables
+Create a `.env` file in the backend folder (example):
 
 ```env
 # Server
@@ -101,57 +101,57 @@ PORT=3333
 DATABASE_URL="mysql://USER:PASSWORD@localhost:3306/agendamento_mvp"
 
 # Auth
-JWT_SECRET="sua_chave_super_secreta"
+JWT_SECRET="your_super_secret_key"
 JWT_EXPIRES_IN="1d"
 ```
 
-### 5) Rode as migrations e gere o Prisma Client
+### 5) Run migrations and generate Prisma Client
 ```bash
 npx prisma migrate dev
 npx prisma generate
 ```
 
-### 6) Inicie o servidor
+### 6) Start the server
 ```bash
 npm run dev
 ```
 
-✅ API rodando em: `http://localhost:3333` (exemplo)
+✅ API running at: `http://localhost:3333` (example)
 
 ---
 
 ## 💻 Frontend (Web)
 
-### 7) Acesse a pasta do frontend
-> Ajuste o nome da pasta conforme a estrutura (ex.: `frontend`, `web`, `client`).
+### 7) Go to the frontend folder
+> Adjust the folder name according to your structure (e.g., `frontend`, `web`, `client`).
 ```bash
 cd ../frontend
 ```
 
-### 8) Instale as dependências
+### 8) Install dependencies
 ```bash
 npm install
 ```
 
-### 9) Configure variáveis de ambiente do Frontend
-Crie um `.env` no frontend (exemplo):
+### 9) Configure frontend environment variables
+Create a `.env` file in the frontend (example):
 
 ```env
 VITE_API_URL="http://localhost:3333"
 ```
 
-### 10) Inicie o frontend
+### 10) Start the frontend
 ```bash
 npm run dev
 ```
 
-✅ Frontend rodando em: `http://localhost:5173` (padrão do Vite)
+✅ Frontend running at: `http://localhost:5173` (Vite default)
 
 ---
 
-## 🗂️ Estrutura de pastas (simplificada)
+## 🗂️ Folder structure (simplified)
 
-> Pode variar conforme sua organização. Exemplo comum para esse tipo de projeto:
+> May vary depending on your organization. Common example for this type of project:
 
 ```text
 Agendamento-MVP/
@@ -183,38 +183,38 @@ Agendamento-MVP/
 
 ---
 
-## 🔐 Segurança (resumo)
-- 🔒 Senhas armazenadas com **hash (Bcrypt)**
-- 🪪 Sessões stateless via **JWT**
-- 🧩 Separação entre **área autenticada (profissional)** e **página pública (cliente)**
+## 🔐 Security (summary)
+- 🔒 Passwords stored with **hashing (Bcrypt)**
+- 🪪 Stateless sessions via **JWT**
+- 🧩 Separation between **authenticated area (professional)** and **public page (client)**
 
 ---
 
-## 🧪 Próximos passos (ideias)
-- 📆 Integração com Google Calendar
-- 🔔 Notificações por e-mail/WhatsApp
-- 💳 Pagamento para confirmação do agendamento (Stripe/Mercado Pago)
-- 👥 Multi-usuário por estabelecimento
+## 🧪 Next steps (ideas)
+- 📆 Google Calendar integration
+- 🔔 Notifications via email/WhatsApp
+- 💳 Payment to confirm booking (Stripe/Mercado Pago)
+- 👥 Multi-user per business/location
 
 ---
 
-## 🤝 Contribuição
-Sugestões e PRs são bem-vindos!
+## 🤝 Contributing
+Suggestions and PRs are welcome!
 
-1. Faça um fork
-2. Crie sua branch: `git checkout -b feature/minha-feature`
-3. Commit: `git commit -m "feat: minha feature"`
-4. Push: `git push origin feature/minha-feature`
-5. Abra um Pull Request
-
----
-
-## 📄 Licença
-Defina aqui a licença do projeto (ex.: MIT).  
-Se ainda não houver, você pode adicionar um arquivo `LICENSE`.
+1. Fork the repository
+2. Create your branch: `git checkout -b feature/my-feature`
+3. Commit: `git commit -m "feat: my feature"`
+4. Push: `git push origin feature/my-feature`
+5. Open a Pull Request
 
 ---
 
-### 📌 Autor
+## 📄 License
+Define the project license here (e.g., MIT).  
+If you don't have one yet, you can add a `LICENSE` file.
+
+---
+
+### 📌 Author
 **VINICIUS0098876**  
-Repositório: https://github.com/VINICIUS0098876/Agendamento-MVP
+Repository: https://github.com/VINICIUS0098876/Agendamento-MVP
