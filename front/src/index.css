@@ -1,3 +1,104 @@
 @import "tailwindcss";
 
+/* ===== Esconder scrollbars do html/body/root ===== */
+html,
+body,
+#root {
+  overflow-x: hidden;
+  scrollbar-width: none; /* Firefox */
+}
 
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+#root::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+
+/* ===== Scrollbar personalizada do main (conteúdo) ===== */
+main::-webkit-scrollbar {
+  width: 6px;
+}
+
+main::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+main::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.15);
+  border-radius: 9999px;
+}
+
+main::-webkit-scrollbar-thumb:hover {
+  background: rgba(245, 158, 11, 0.35);
+}
+
+main {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(148, 163, 184, 0.15) transparent;
+}
+
+/* ===== Esconder scrollbar da sidebar ===== */
+aside::-webkit-scrollbar {
+  display: none;
+}
+
+aside {
+  scrollbar-width: none;
+}
+
+/* ===== Animação de transição de página ===== */
+@keyframes page-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes page-slide-right {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-page-in {
+  animation: page-fade-in 0.5s ease-out both;
+}
+
+.animate-panel-in {
+  animation: page-slide-right 0.6s ease-out 0.15s both;
+}
+
+*,
+*::before,
+*::after {
+  cursor: default;
+  user-select: none;
+  -webkit-user-select: none;
+  caret-color: transparent;
+}
+
+input,
+textarea,
+select,
+[contenteditable="true"] {
+  cursor: text;
+  user-select: text;
+  -webkit-user-select: text;
+  caret-color: auto;
+}
+
+button,
+a,
+label[for],
+[role="button"] {
+  cursor: pointer;
+}
