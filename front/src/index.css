@@ -77,6 +77,19 @@ aside {
   animation: page-slide-right 0.6s ease-out 0.15s both;
 }
 
+@keyframes slide-in-left {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left 0.25s ease-out both;
+}
+
 *,
 *::before,
 *::after {

@@ -197,7 +197,7 @@ function Horarios() {
   }
 
   return (
-    <div className="animate-page-in flex-1 p-6 lg:p-8 max-w-7xl">
+    <div className="animate-page-in flex-1 p-4 sm:p-6 lg:p-8 max-w-7xl">
       {/* ===== Header ===== */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
         <div>
@@ -218,7 +218,7 @@ function Horarios() {
       </div>
 
       {/* ===== Mini Métricas ===== */}
-      <div className="grid grid-cols-3 gap-4 mb-6">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-6">
         <div className="bg-slate-900/60 border border-slate-800/60 rounded-xl px-4 py-3 flex items-center gap-3">
           <div className="w-8 h-8 bg-blue-500/10 rounded-lg flex items-center justify-center shrink-0">
             <Clock className="w-4 h-4 text-blue-400" />

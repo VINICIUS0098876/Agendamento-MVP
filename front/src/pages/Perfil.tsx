@@ -157,7 +157,7 @@ function Perfil() {
   }
 
   return (
-    <div className="animate-page-in flex-1 p-6 lg:p-8 max-w-4xl">
+    <div className="animate-page-in flex-1 p-4 sm:p-6 lg:p-8 max-w-4xl">
       {/* ===== Header ===== */}
       <div className="mb-8">
         <h1 className="text-2xl lg:text-3xl font-bold text-slate-50 tracking-tight">

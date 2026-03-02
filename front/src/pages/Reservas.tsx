@@ -147,7 +147,7 @@ function Reservas() {
   }
 
   return (
-    <div className="animate-page-in flex-1 p-6 lg:p-8">
+    <div className="animate-page-in flex-1 p-4 sm:p-6 lg:p-8">
       {/* ===== Header ===== */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
         <div>
@@ -161,7 +161,7 @@ function Reservas() {
       </div>
 
       {/* ===== Stats Cards ===== */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-6">
         <div className="bg-slate-900/60 border border-slate-800/60 rounded-xl p-4 flex items-center gap-3">
           <div className="w-10 h-10 bg-amber-500/10 rounded-lg flex items-center justify-center">
             <CalendarCheck size={20} className="text-amber-500" />
@@ -242,125 +242,198 @@ function Reservas() {
             </p>
           </div>
         ) : (
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead className="bg-slate-900/80">
-                <tr className="text-left">
-                  <th className="px-5 py-3 text-xs font-semibold text-slate-400 uppercase tracking-wider">
-                    Cliente
-                  </th>
-                  <th className="px-5 py-3 text-xs font-semibold text-slate-400 uppercase tracking-wider">
-                    Email
-                  </th>
-                  <th className="px-5 py-3 text-xs font-semibold text-slate-400 uppercase tracking-wider">
-                    Data & Hora
-                  </th>
-                  <th className="px-5 py-3 text-xs font-semibold text-slate-400 uppercase tracking-wider">
-                    Status
-                  </th>
-                  <th className="px-5 py-3 text-xs font-semibold text-slate-400 uppercase tracking-wider">
-                    Reservado em
-                  </th>
-                  <th className="px-5 py-3 text-xs font-semibold text-slate-400 uppercase tracking-wider text-right">
-                    Ações
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-800/40">
-                {filtered.map((r) => {
-                  const past = isReservaPast(r);
+          <>
+            {/* ===== Mobile Card Layout ===== */}
+            <div className="md:hidden divide-y divide-slate-800/40">
+              {filtered.map((r) => {
+                const past = isReservaPast(r);
+                return (
+                  <div
+                    key={r.id_reserva}
+                    className={`p-4 transition-colors ${
+                      past ? "opacity-60" : ""
+                    }`}
+                  >
+                    <div className="flex items-start justify-between mb-3">
+                      <div className="flex items-center gap-3">
+                        <div className="w-9 h-9 bg-linear-to-br from-amber-500/20 to-amber-600/10 rounded-lg flex items-center justify-center shrink-0">
+                          <span className="text-sm font-bold text-amber-500">
+                            {r.cliente_nome.charAt(0).toUpperCase()}
+                          </span>
+                        </div>
+                        <div>
+                          <p className="text-sm font-medium text-slate-200">
+                            {r.cliente_nome}
+                          </p>
+                          <p className="text-xs text-slate-500">
+                            {r.cliente_email}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        <button
+                          onClick={() => setDetail(r)}
+                          className="p-2 rounded-lg text-slate-500 hover:text-amber-500 hover:bg-amber-500/10 transition-all"
+                        >
+                          <Eye size={16} />
+                        </button>
+                        {!past && (
+                          <button
+                            onClick={() => setCancelId(r.id_reserva)}
+                            className="p-2 rounded-lg text-slate-500 hover:text-red-400 hover:bg-red-500/10 transition-all"
+                          >
+                            <Trash2 size={16} />
+                          </button>
+                        )}
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <Clock size={14} className="text-slate-500" />
+                        <span className="text-sm text-slate-300">
+                          {r.horarios
+                            ? formatDateTime(r.horarios.data_hora)
+                            : "—"}
+                        </span>
+                      </div>
+                      {past ? (
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-slate-500/10 text-slate-400 border border-slate-500/15">
+                          <div className="w-1.5 h-1.5 rounded-full bg-slate-400" />
+                          Concluída
+                        </span>
+                      ) : (
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/15">
+                          <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                          Agendada
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
 
-                  return (
-                    <tr
-                      key={r.id_reserva}
-                      className={`group transition-colors ${
-                        past
-                          ? "bg-slate-900/20 opacity-60"
-                          : "hover:bg-slate-800/30"
-                      }`}
-                    >
-                      {/* Cliente */}
-                      <td className="px-5 py-3.5">
-                        <div className="flex items-center gap-3">
-                          <div className="w-8 h-8 bg-linear-to-br from-amber-500/20 to-amber-600/10 rounded-lg flex items-center justify-center shrink-0">
-                            <span className="text-xs font-bold text-amber-500">
-                              {r.cliente_nome.charAt(0).toUpperCase()}
+            {/* ===== Desktop Table Layout ===== */}
+            <div className="hidden md:block overflow-x-auto">
+              <table className="w-full">
+                <thead className="bg-slate-900/80">
+                  <tr className="text-left">
+                    <th className="px-5 py-3 text-xs font-semibold text-slate-400 uppercase tracking-wider">
+                      Cliente
+                    </th>
+                    <th className="px-5 py-3 text-xs font-semibold text-slate-400 uppercase tracking-wider">
+                      Email
+                    </th>
+                    <th className="px-5 py-3 text-xs font-semibold text-slate-400 uppercase tracking-wider">
+                      Data & Hora
+                    </th>
+                    <th className="px-5 py-3 text-xs font-semibold text-slate-400 uppercase tracking-wider">
+                      Status
+                    </th>
+                    <th className="px-5 py-3 text-xs font-semibold text-slate-400 uppercase tracking-wider">
+                      Reservado em
+                    </th>
+                    <th className="px-5 py-3 text-xs font-semibold text-slate-400 uppercase tracking-wider text-right">
+                      Ações
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-800/40">
+                  {filtered.map((r) => {
+                    const past = isReservaPast(r);
+
+                    return (
+                      <tr
+                        key={r.id_reserva}
+                        className={`group transition-colors ${
+                          past
+                            ? "bg-slate-900/20 opacity-60"
+                            : "hover:bg-slate-800/30"
+                        }`}
+                      >
+                        {/* Cliente */}
+                        <td className="px-5 py-3.5">
+                          <div className="flex items-center gap-3">
+                            <div className="w-8 h-8 bg-linear-to-br from-amber-500/20 to-amber-600/10 rounded-lg flex items-center justify-center shrink-0">
+                              <span className="text-xs font-bold text-amber-500">
+                                {r.cliente_nome.charAt(0).toUpperCase()}
+                              </span>
+                            </div>
+                            <span className="text-sm font-medium text-slate-200">
+                              {r.cliente_nome}
                             </span>
                           </div>
-                          <span className="text-sm font-medium text-slate-200">
-                            {r.cliente_nome}
+                        </td>
+
+                        {/* Email */}
+                        <td className="px-5 py-3.5">
+                          <span className="text-sm text-slate-400">
+                            {r.cliente_email}
                           </span>
-                        </div>
-                      </td>
+                        </td>
 
-                      {/* Email */}
-                      <td className="px-5 py-3.5">
-                        <span className="text-sm text-slate-400">
-                          {r.cliente_email}
-                        </span>
-                      </td>
+                        {/* Data & Hora */}
+                        <td className="px-5 py-3.5">
+                          <div className="flex items-center gap-2">
+                            <Clock size={14} className="text-slate-500" />
+                            <span className="text-sm text-slate-300">
+                              {r.horarios
+                                ? formatDateTime(r.horarios.data_hora)
+                                : "—"}
+                            </span>
+                          </div>
+                        </td>
 
-                      {/* Data & Hora */}
-                      <td className="px-5 py-3.5">
-                        <div className="flex items-center gap-2">
-                          <Clock size={14} className="text-slate-500" />
-                          <span className="text-sm text-slate-300">
-                            {r.horarios
-                              ? formatDateTime(r.horarios.data_hora)
-                              : "—"}
-                          </span>
-                        </div>
-                      </td>
-
-                      {/* Status */}
-                      <td className="px-5 py-3.5">
-                        {past ? (
-                          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-slate-500/10 text-slate-400 border border-slate-500/15">
-                            <div className="w-1.5 h-1.5 rounded-full bg-slate-400" />
-                            Concluída
-                          </span>
-                        ) : (
-                          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/15">
-                            <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                            Agendada
-                          </span>
-                        )}
-                      </td>
-
-                      {/* Reservado em */}
-                      <td className="px-5 py-3.5">
-                        <span className="text-xs text-slate-500">
-                          {r.criado_em ? formatDateTime(r.criado_em) : "—"}
-                        </span>
-                      </td>
-
-                      {/* Ações */}
-                      <td className="px-5 py-3.5 text-right">
-                        <div className="flex items-center justify-end gap-1.5">
-                          <button
-                            onClick={() => setDetail(r)}
-                            className="p-2 rounded-lg text-slate-500 hover:text-amber-500 hover:bg-amber-500/10 transition-all"
-                            title="Ver detalhes"
-                          >
-                            <Eye size={16} />
-                          </button>
-                          {!past && (
-                            <button
-                              onClick={() => setCancelId(r.id_reserva)}
-                              className="p-2 rounded-lg text-slate-500 hover:text-red-400 hover:bg-red-500/10 transition-all"
-                              title="Cancelar reserva"
-                            >
-                              <Trash2 size={16} />
-                            </button>
+                        {/* Status */}
+                        <td className="px-5 py-3.5">
+                          {past ? (
+                            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-slate-500/10 text-slate-400 border border-slate-500/15">
+                              <div className="w-1.5 h-1.5 rounded-full bg-slate-400" />
+                              Concluída
+                            </span>
+                          ) : (
+                            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/15">
+                              <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                              Agendada
+                            </span>
                           )}
-                        </div>
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
+                        </td>
+
+                        {/* Reservado em */}
+                        <td className="px-5 py-3.5">
+                          <span className="text-xs text-slate-500">
+                            {r.criado_em ? formatDateTime(r.criado_em) : "—"}
+                          </span>
+                        </td>
+
+                        {/* Ações */}
+                        <td className="px-5 py-3.5 text-right">
+                          <div className="flex items-center justify-end gap-1.5">
+                            <button
+                              onClick={() => setDetail(r)}
+                              className="p-2 rounded-lg text-slate-500 hover:text-amber-500 hover:bg-amber-500/10 transition-all"
+                              title="Ver detalhes"
+                            >
+                              <Eye size={16} />
+                            </button>
+                            {!past && (
+                              <button
+                                onClick={() => setCancelId(r.id_reserva)}
+                                className="p-2 rounded-lg text-slate-500 hover:text-red-400 hover:bg-red-500/10 transition-all"
+                                title="Cancelar reserva"
+                              >
+                                <Trash2 size={16} />
+                              </button>
+                            )}
+                          </div>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </>
         )}
       </div>
 
